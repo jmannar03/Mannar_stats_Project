@@ -7,7 +7,7 @@
   {% bootstrap_css %} 
   {% bootstrap_javascript %}
   {% bootstrap_messages %}
-   <title>UCCS CS Students</title>
+   <title>Welcome to my data analytics app</title>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <title>Bootstrap demo</title>
@@ -19,7 +19,7 @@
 
      <!-- Navbar-->
      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-       <img src="{% static 'images/uccs_logo.gif' %}">
+       <img src="{% static 'images/DASE_logo.jpg' %}">
        <div class="container-fluid">
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,7 @@
              <a class="nav-link" href="#">Menu 2</a>
              <a class="nav-link" href="#">Menu 3</a>
              {% if user.is_authenticated %}
-               <a class="nav-link" href="{% url 'logout' %}?next={{ request.path }}">Logout {{user}}</a>
+               {% comment %} <a class="nav-link" href="{% url 'logout' %}?next={{ request.path }}">Logout {{user}}</a> {% endcomment %}
              {% else %}
                {% comment %} <a class="nav-link" href="{% url 'login' %}?next={{ request.path }}">Login</a> {% endcomment %}
              {% endif %}
