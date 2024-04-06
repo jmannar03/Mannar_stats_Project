@@ -92,11 +92,22 @@ def update_Character(request,pk):
     context = {'form':form}
     return render(request, 'my_project/update_character_form.html',context)
 
-def view_character(request):
-    return render(request, 'my_project/view_character.html')
+def view_character(request, pk):
 
-def view_project(request):
-    return render(request, 'my_project/view_project.html')
+    # Retrieve the StarWarsCharacter object by its ID
+    character = StarWarsCharacter.objects.get(id=pk)
+    
+    # Render the template with the character object
+    return render(request, 'my_project/view_character.html', {'character': character})
+
+    # return render(request, 'my_project/view_character.html')
+
+def view_project(request,pk):
+    project = Project.objects.get(id=pk)
+    
+    # Render the template with the character object
+    return render(request, 'my_project/view_project.html', {'project': project})
+    #return render(request, 'my_project/view_project.html')
 
 
 

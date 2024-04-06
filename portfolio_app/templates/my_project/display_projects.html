@@ -11,7 +11,7 @@
             <li>
                 <a href="{{ project.get_absolute_url }}">{{project.name }}</a>
                 {% comment %} <div class="blue-box"> {% endcomment %}
-                    <a class="btn btn-sm btn-info" href="#" role="button">View</a>
+                    <a class="btn btn-sm btn-info" href="{% url 'project_details' project.id %}" role="button">View</a>
                     {% comment %} </div> {% endcomment %}
                     {% comment %} <div class="yellow-box"> {% endcomment %}
                     <a class="btn btn-warning btn-info" href="{% url 'update_Project' project.id %}" role="button">Update</a>

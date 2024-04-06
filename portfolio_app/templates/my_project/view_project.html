@@ -1,0 +1,23 @@
+{% extends "my_project/base_template.html" %}
+
+{% block content %}
+
+<h1>Project Details</h1>
+    <ul>
+        <li><strong>Name:</strong> {{ project.name }}</li>
+        <li><strong>Has_DataSet:</strong> {{ project.has_DataSet }}</li>
+        <li><strong>Email:</strong> {{ project.email }}</li>
+        <li><strong>About:</strong> {{ project.about }}</li>
+
+        {% comment %} <li><strong>Height:</strong> {{ character.height }}</li> {% endcomment %}
+        {% comment %} <li><strong>Mass:</strong> {{ character.mass }}</li>
+        <li><strong>Hair Color:</strong> {{ character.hair_color }}</li>
+        <li><strong>Skin Color:</strong> {{ character.skin_color }}</li>
+        <li><strong>Eye Color:</strong> {{ character.eye_color }}</li>
+        <li><strong>Birth Year:</strong> {{ character.birth_year }}</li>
+        <li><strong>Gender:</strong> {{ character.gender }}</li>
+        <li><strong>Homeworld:</strong> {{ character.homeworld }}</li>
+        <li><strong>Species:</strong> {{ character.species }}</li> {% endcomment %}
+    </ul>
+
+{% endblock %}
