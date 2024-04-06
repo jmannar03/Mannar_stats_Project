@@ -1,0 +1,27 @@
+{% extends "my_project/base_template.html" %}
+
+{% block content %}
+<h1>Current starwars characters in dataset:</h1>
+
+<body>
+    <h1>Project List</h1>
+    <ul>
+        <a class="btn btn-info" href="#" role="button">Create new</a>
+        {% for character in allCharacters %}
+            <li>
+                <a href="{{ character.get_absolute_url }}">{{character.name }}</a>
+                {% comment %} <div class="blue-box"> {% endcomment %}
+                    <a class="btn btn-sm btn-info" href="#" role="button">View</a>
+                    {% comment %} </div> {% endcomment %}
+                    {% comment %} <div class="yellow-box"> {% endcomment %}
+                    <a class="btn btn-warning btn-info" href="#" role="button">Update</a>
+                    {% comment %} </div> {% endcomment %}
+                    {% comment %} <div class="red-box"> {% endcomment %}
+                    <a class="btn btn-danger btn-sm " href="#" role="button">Delete</a>
+                    {% comment %} </div> {% endcomment %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+
+{% endblock %}
