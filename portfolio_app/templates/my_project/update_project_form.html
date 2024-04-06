@@ -1,0 +1,12 @@
+{% extends "my_project/base_template.html" %}
+
+{% block content %}
+<h1>Welcome, please edit the project</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" name="Submit">
+  </form> 
+
+{% endblock %}

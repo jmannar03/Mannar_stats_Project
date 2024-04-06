@@ -6,7 +6,7 @@
 <body>
     <h1>Project List</h1>
     <ul>
-        <a class="btn btn-info" href="#" role="button">Create new</a>
+        <a class="btn btn-info" href="{% url 'create_Project' %}" role="button">Create new</a>
         {% for project in activeProjects %}
             <li>
                 <a href="{{ project.get_absolute_url }}">{{project.name }}</a>
@@ -14,10 +14,10 @@
                     <a class="btn btn-sm btn-info" href="#" role="button">View</a>
                     {% comment %} </div> {% endcomment %}
                     {% comment %} <div class="yellow-box"> {% endcomment %}
-                    <a class="btn btn-warning btn-info" href="#" role="button">Update</a>
+                    <a class="btn btn-warning btn-info" href="{% url 'update_Project' project.id %}" role="button">Update</a>
                     {% comment %} </div> {% endcomment %}
                     {% comment %} <div class="red-box"> {% endcomment %}
-                    <a class="btn btn-danger btn-sm " href="#" role="button">Delete</a>
+                    <a class="btn btn-danger btn-sm " href="{% url 'delete_Project' project.id %}" role="button">Delete</a>
                     {% comment %} </div> {% endcomment %}
             </li>
         {% endfor %}
