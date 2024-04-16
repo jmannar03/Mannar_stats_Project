@@ -20,5 +20,7 @@ urlpatterns = [
     path('update_Project/<str:pk>/', views.update_Project, name= 'update_Project'),
     path('character_details/<int:pk>/', views.view_character, name='character_details'),
     path('project_details/<str:pk>/', views.view_project, name='project_details'),
-
+    path('userlogin/',views.login_user,name = 'user-login'),
+    path('userRegister/',views.register_user,name = 'register-user'),
+    path('userlogout/',views.logout_user,name = 'user-logout'),
 ]
