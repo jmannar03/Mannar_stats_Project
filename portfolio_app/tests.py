@@ -17,7 +17,7 @@ class TestForms(LiveServerTestCase):
         driver.get('http://127.0.0.1:8000/')
         assert "Welcome to my data analytics app" in driver.title
 
-    def testCharacterForm(self):
+    def testProjectForm(self):
         #print('we are in tests')
         driver = webdriver.Chrome()
 
@@ -32,6 +32,9 @@ class TestForms(LiveServerTestCase):
         name_input = driver.find_element(By.ID, 'id_name')
         name_input.send_keys('Justin')
 
+        box = driver.find_element(By.ID, 'id_has_DataSet')
+        box.click()
+
         about_input = driver.find_element(By.ID, 'id_about')
         about_input.send_keys('starwars project')
 
@@ -42,23 +45,115 @@ class TestForms(LiveServerTestCase):
         submit_button = driver.find_element(By.NAME, 'Submit')
         submit_button.click()
 
-        # name = driver.find_element(By.NAME,'username')
-        # sleep(2)
-        # name.send_keys('Justin')
-        # #dataset = driver.find_element_by_name('has_DataSet')
-        # about = driver.find_element(By.NAME,'about').send_keys('starwars project')
-        # sleep(2)
-        # email = driver.find_element(By.NAME,'email').send_keys('jmannar2@uccs.edu')
-        # sleep(2)
-        # submit_button = driver.find_element_by_name('Submit')
-        # submit_button.click()
+        driver.get('http://127.0.0.1:8000/projects/')
+
+        sleep(3)
+
+    #how do I get to the character-list to see if the character was made in the test?
+
+    # def testCharactersForm(self):
+    #     driver = webdriver.Chrome()
+
+    #     driver.get('http://127.0.0.1:8000/characters/')
+    #     create_button = driver.find_element(By.ID,'createNew2')
+    #     create_button.click()
+
+    #     name_input = driver.find_element(By.ID,'id_name')
+    #     name_input.send_keys('billy')
+
+    #     height_input = driver.find_element(By.ID,'id_height')
+    #     height_input.send_keys('23')
+
+    #     mass_input = driver.find_element(By.ID,'id_mass')
+    #     mass_input.send_keys('30')
+
+    #     hairColor_input = driver.find_element(By.ID,'id_hair_color')
+    #     hairColor_input.send_keys('brown')
+
+    #     skinColor_input = driver.find_element(By.ID,'id_skin_color')
+    #     skinColor_input.send_keys('brown')
+
+    #     eyeColor_input = driver.find_element(By.ID,'id_eye_color')
+    #     eyeColor_input.send_keys('blue')
+
+    #     birthYear_input = driver.find_element(By.ID,'id_birth_year')
+    #     birthYear_input.send_keys('2024')
+
+    #     gender_input = driver.find_element(By.ID,'id_gender')
+    #     gender_input.send_keys('male')
+
+    #     homeworld_input = driver.find_element(By.ID,'id_homeworld')
+    #     homeworld_input.send_keys('Alderran')
+
+    #     species_input = driver.find_element(By.ID,'id_species')
+    #     species_input.send_keys('clone')
+
+    #     films_input = driver.find_element(By.ID,'id_films')
+    #     films_input.send_keys('Revenge of the sith')
+
+    #     name_input = driver.find_element(By.ID,'id_vehicles')
+    #     name_input.send_keys('speeder')
+
+    #     starShip_input = driver.find_element(By.ID,'id_starships')
+    #     starShip_input.send_keys('Omicron class star fighter')
+
+    #     submit = driver.find_element(By.NAME,'Submit')
+    #     submit.click()
+
+    #     driver.get('http://127.0.0.1:8000/characters/')
+
+    #     sleep(3)
+
+    def testLogin(self):
+        driver = webdriver.Chrome()
+
+        driver.get('http://127.0.0.1:8000/')
+        login_button = driver.find_element(By.ID, 'login')
+        login_button.click()
+
+        username = driver.find_element(By.NAME, 'username')
+        username.send_keys('newtry')
+
+        password = driver.find_element(By.NAME, 'password')
+        password.send_keys('CacaC00too321')
+
+        submit_button = driver.find_element(By.ID, 'Submit')
+        submit_button.click()
+
+        sleep(3)
+
+        driver.get('http://127.0.0.1:8000/')
+
+        sleep(3)
+
+    def testLogout(self):
+        driver = webdriver.Chrome()
+
+        driver.get('http://127.0.0.1:8000/')
+
+        login_button = driver.find_element(By.ID, 'login')
+        login_button.click()
+
+        username = driver.find_element(By.NAME, 'username')
+        username.send_keys('newtry')
+
+        password = driver.find_element(By.NAME, 'password')
+        password.send_keys('CacaC00too321')
+
+        submit_button = driver.find_element(By.ID, 'Submit')
+        submit_button.click()
+
+        sleep(3)
+
+        driver.get('http://127.0.0.1:8000/')
+
+        logout_button = driver.find_element(By.ID, 'logout')
+        logout_button.click()
+
+        sleep(3)
 
 
-    #     #character_List = driver.find_element_by_
-    #     # name.send_keys('Justin')
-    #     # #dataset.
-    #     # about.send_keys('I am in star wars')
-    #     # email.send_keys('jmannar2@uccs.edu')
+        
 
         
 class TestViews(TestCase):
@@ -74,6 +169,39 @@ class TestViews(TestCase):
         response = client.get(reverse('characters'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'my_project/display_characters.html')
+
+class TestModels(TestCase):
+    def testProject(self):
+        self.project = Project.objects.create(
+            name = 'helo world',
+            has_DataSet = True,
+            about = 'this is a project',
+            email = 'bob@gmail'
+        )
+        self.assertEqual(self.project.name, 'helo world')
+        self.assertTrue(self.project.has_DataSet)
+        self.assertEqual(self.project.about, 'this is a project')
+        self.assertEqual(self.project.email,'bob@gmail')
+        #self.assertEqual(self.project.get_absolute_url(),'/project/1')
+
+
+    # def testCharacter(self):
+    #     self.Character = StarWarsCharacter.objects.create(
+    #         name = 'john',
+    #         height = 36,
+    #         mass = 24,
+    #         hair_color = 'brown',
+    #         skin_color = 'tan',
+    #         eye_color = 'blue',
+    #         birth_year = '2004',
+    #         gender = 'male',
+    #         homeworld = 'kamino',
+    #         species = 'human',
+    #         films = 'return of the jedi',
+    #         vehicles = 'none',
+    #         starships = 'none',
+    #     )
+        
 
 
 

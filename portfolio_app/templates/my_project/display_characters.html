@@ -6,7 +6,7 @@
 <body>
     <h1>Project List</h1>
     <ul>
-        <a class="btn btn-info" href="{% url 'create_Character' %}" role="button">Create new</a>
+        <a class="btn btn-info" id = 'createNew2' href="{% url 'create_Character' %}" role="button">Create new</a>
         {% for character in allCharacters %}
             <li>
                 <a href="{{ character.get_absolute_url }}">{{character.name }}</a>

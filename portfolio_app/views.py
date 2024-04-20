@@ -34,7 +34,7 @@ class ProjectListView(generic.DetailView):
 class CharacterListView(generic.DetailView):
     model = StarWarsCharacter
 
-@login_required(login_url='user-login')
+#@login_required(login_url='user-login')
 def add_Character(request):
     form = CharacterForm
     if request.method == 'POST':
@@ -155,7 +155,7 @@ def register_user(request):
 
 def logout_user(request):
     logout(request)
-    return redirect('user-login')
+    return redirect('index')
 
 
 

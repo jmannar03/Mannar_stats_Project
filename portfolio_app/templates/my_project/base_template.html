@@ -38,7 +38,7 @@
              <a class="nav-link" href="projects/">Projects</a>
              <a class="nav-link" href="admin">admin</a>
              <a class="nav-link" href="userRegister/">Register</a>
-             <a class="nav-link" href="userlogin/">Login</a> 
+             <a class="nav-link" id = 'login' href="userlogin/">Login</a> 
              {% comment %} <a class="nav-Link" href="userlogout/">Logout {{user}}</a> {% endcomment %}
              
 
@@ -53,7 +53,7 @@
        </div>
 
        <span class="hello-msg"> Hello {{request.user}}</span>
-       <span><a class="hello-msg" href="{% url 'user-login' %}" > Logout</a></span>
+       <span><a class="hello-msg" id = 'logout' href="{% url 'user-logout' %}" > Logout</a></span>
      </nav>
 
        <div class="col-sm-10">
